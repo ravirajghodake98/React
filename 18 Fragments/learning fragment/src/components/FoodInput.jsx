@@ -1,6 +1,6 @@
 import styles from './FoodInput.module.css'
 
-const FoodInput = ({ handleOnChangeEvent }) => {
+const FoodInput = ({ handleKeyDown }) => {
   // const handleOnChangeEvent = (event) => {
   //   console.log(event.target.value)
   // }
@@ -9,7 +9,7 @@ const FoodInput = ({ handleOnChangeEvent }) => {
     type="text"
     placeholder="kya lena h wo daal"
     className={styles.foodInput}
-    onChange={handleOnChangeEvent} />
+    onKeyDown={handleKeyDown} />
 }
 
 export default FoodInput;
