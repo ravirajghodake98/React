@@ -1,8 +1,9 @@
 import { useState } from "react";
+import { BiMessageAdd } from "react-icons/bi";
 
 function AddTodo({ onNewItem }) {
-  const [todoName, setTodoName] = useState();
-  const [dueDate, setDueDate] = useState();
+  const [todoName, setTodoName] = useState('');
+  const [dueDate, setDueDate] = useState('');
 
   const handleNameChange = (event) => {
     setTodoName(event.target.value);
@@ -32,7 +33,7 @@ function AddTodo({ onNewItem }) {
             type="button"
             className="btn btn-success kg-button"
             onClick={handleAddButtonClick}>
-            Add
+            <BiMessageAdd></BiMessageAdd>
           </button>
         </div>
       </div>
