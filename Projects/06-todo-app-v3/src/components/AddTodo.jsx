@@ -13,7 +13,9 @@ function AddTodo({ onNewItem }) {
     setDueDate(event.target.value);
   }
 
-  const handleAddButtonClick = () => {
+  const handleAddButtonClick = (event) => {
+    // console.log(event);
+    event.preventDefault();
     onNewItem(todoName, dueDate)
     setDueDate('');
     setTodoName('');
@@ -21,7 +23,7 @@ function AddTodo({ onNewItem }) {
 
   return (
     <div className="container text-center">
-      <div className="row kg-row">
+      <form className="row kg-row" onSubmit={handleAddButtonClick}>
         <div className="col-6">
           <input type="text" placeholder="Enter Todo Here" value={todoName} onChange={handleNameChange} />
         </div>
@@ -30,13 +32,12 @@ function AddTodo({ onNewItem }) {
         </div>
         <div className="col-2">
           <button
-            type="button"
             className="btn btn-success kg-button"
-            onClick={handleAddButtonClick}>
+          >
             <BiMessageAdd></BiMessageAdd>
           </button>
         </div>
-      </div>
+      </form>
     </div>
   );
 }
