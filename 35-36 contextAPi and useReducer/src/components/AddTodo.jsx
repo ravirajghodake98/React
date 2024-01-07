@@ -1,33 +1,19 @@
-import { useState, useRef } from "react";
+import { useRef, useContext } from "react";
 import { BiMessageAdd } from "react-icons/bi";
+import { TodoItemsContext } from "../store/todo_item_store";
 
-function AddTodo({ onNewItem }) {
-  // const [todoName, setTodoName] = useState('');
-  // const [dueDate, setDueDate] = useState('');
+function AddTodo() {
+  const { addNewItem } = useContext(TodoItemsContext)
   const todoNameElement = useRef();
   const dueDateElement = useRef();
 
-  // const handleNameChange = (event) => {
-  //   setTodoName(event.target.value);
-  //   noOfUpdates.current += 1;
-  // }
-
-  // const handleDateChange = (event) => {
-  //   setDueDate(event.target.value);
-  //   console.log(`no. of updates are: ${noOfUpdates.current}`)
-  // }
-
   const handleAddButtonClick = (event) => {
-    // console.log(event);
     event.preventDefault();
     const todoName = todoNameElement.current.value;
     const dueDate = dueDateElement.current.value;
     todoNameElement.current.value = "";
     dueDateElement.current.value = "";
-    // console.log(`${todoName} due on: ${dueDate}`)
-    onNewItem(todoName, dueDate)
-    // setDueDate('');
-    // setTodoName('');
+    addNewItem(todoName, dueDate)
   }
 
   return (
@@ -35,14 +21,10 @@ function AddTodo({ onNewItem }) {
       <form className="row kg-row" onSubmit={handleAddButtonClick}>
         <div className="col-6">
           <input type="text" ref={todoNameElement} placeholder="Enter Todo Here"
-          // value={todoName}
-          // onChange={handleNameChange}
           />
         </div>
         <div className="col-4">
           <input type="date" ref={dueDateElement}
-          // value={dueDate}
-          // onChange={handleDateChange} 
           />
         </div>
         <div className="col-2">
