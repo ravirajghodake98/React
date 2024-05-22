@@ -1,4 +1,4 @@
-import { createContext, useReducer } from "react";
+import { createContext, useCallback, useMemo, useReducer } from "react";
 import PropTypes from "prop-types";
 
 const DEFAULT_CONTEXT = {
@@ -51,14 +51,21 @@ const PostListProvider = ({ children }) => {
     });
   };
 
-  const deletePost = (postId) => {
-    dispatchPostList({
-      type: "DELETE_POST",
-      payload: {
-        postId,
-      },
-    });
-  };
+  const deletePost = useCallback(
+    (postId) => {
+      dispatchPostList({
+        type: "DELETE_POST",
+        payload: {
+          postId,
+        },
+      });
+    },
+    [dispatchPostList]
+  );
+
+  //useMemo
+  const arr = [5, 1, 9, 3, 4, 6];
+  const sortedArr = useMemo(() => arr.sort(), [arr]);
 
   return (
     <PostList.Provider
