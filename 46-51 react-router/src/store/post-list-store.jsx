@@ -1,10 +1,4 @@
-import {
-  createContext,
-  useCallback,
-  useEffect,
-  useReducer,
-  useState,
-} from "react";
+import { createContext, useCallback, useReducer } from "react";
 import PropTypes from "prop-types";
 
 const DEFAULT_CONTEXT = {
@@ -38,15 +32,6 @@ const PostListProvider = ({ children }) => {
     dispatchPostList({
       type: "ADD_POST",
       payload: post,
-    });
-  };
-
-  const addInitialPosts = (posts) => {
-    dispatchPostList({
-      type: "ADD_INITIAL_POSTS",
-      payload: {
-        posts,
-      },
     });
   };
 
