@@ -1,8 +1,7 @@
-import Footer from "./components/Footer";
-import Header from "./components/Header";
-import HomeItem from "./components/HomeItem";
+import BagItem from "../components/BagItem";
+import BagSummary from "../components/BagSummary";
 
-function App() {
+const Bag = () => {
   const item = {
     id: "001",
     image: "images/1.jpg",
@@ -20,16 +19,15 @@ function App() {
   };
 
   return (
-    <>
-      <Header />
-      <main>
-        <div className="items-container">
-          <HomeItem item={item} />
+    <main>
+      <div className="bag-page">
+        <div className="bag-items-container">
+          <BagItem item={item} />
         </div>
-      </main>
-      <Footer />
-    </>
+        <BagSummary />
+      </div>
+    </main>
   );
-}
+};
 
-export default App;
+export default Bag;
